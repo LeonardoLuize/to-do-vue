@@ -11,16 +11,18 @@
 
 <div id="app">
     <header-component></header-component>
+    <todo-component></todo-component>
 </div>
 
 <script type="module">
     import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
     import HeaderComponent from './components/Header.js'
+    import TodoComponent from './components/Todo.js'
 
     createApp({
         components: {
-            HeaderComponent
-        },
+            HeaderComponent,
+            TodoComponent        },
         data() {
             return {
                 message: 'Hello Vue!'
