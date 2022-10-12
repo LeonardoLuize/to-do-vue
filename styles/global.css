@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    width: 100%;
+    background-color: #2f3136;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 50px;
+
+    background: #1a1a1a;
+}
+
+.header-content {
+    min-width: 80%;
+    padding: 10px 0;
+}
+
+.main-title {
+    color: #42D392;
+}
+
+.main-title strong {
+    color: #319d6f;
+}
