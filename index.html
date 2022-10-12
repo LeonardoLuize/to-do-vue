@@ -11,7 +11,7 @@
 
 <div id="app">
     <header-component></header-component>
-    <todo-component></todo-component>
+    <todo-component :newItem="newItem" :list-value="listValue" :add-item="addItem" :remove-item="removeItem"></todo-component>
 </div>
 
 <script type="module">
@@ -19,14 +19,29 @@
     import HeaderComponent from './components/Header.js'
     import TodoComponent from './components/Todo.js'
 
+    let id = 0;
+
     createApp({
-        components: {
-            HeaderComponent,
-            TodoComponent        },
         data() {
             return {
-                message: 'Hello Vue!'
+                newItem: "",
+                listValue: [
+                    {id: id++, text: "Item 1"},
+                ]
             }
-        }
+        },
+        methods: {
+            addItem(){
+                this.listValue.push({id: id++, text: this.newItem})
+                this.newItem = ""
+            },
+            removeItem(id){
+                this.listValue = this.listValue.filter(item => item.id !== id)
+            }
+        },
+        components: {
+            HeaderComponent,
+            TodoComponent       
+        },
     }).mount('#app')
 </script>
