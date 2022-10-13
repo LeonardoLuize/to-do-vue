@@ -9,9 +9,10 @@ export default {
             ],
         }
     },
-    emits: ['updateInput'],
     methods: {
         addItem(){
+            if(this.newItem == "") return
+            
             this.listValue.push({id: id++, text: this.newItem, done: false})
             this.newItem = ""
         },
