@@ -28,7 +28,7 @@ body {
 }
 
 .main-title {
-    color: #42D392;
+    color: #42d392;
 }
 
 .main-title strong {
@@ -48,7 +48,7 @@ body {
     min-width: 50%;
     padding: 15px;
 
-    background: #F5F0F6;
+    background: #f5f0f6;
     border-radius: 10px;
 }
 
@@ -61,31 +61,30 @@ body {
     border-radius: 8px;
     padding: 5px;
     border: 2px solid #ddd;
-    background-color: #f2f2f2
+    background-color: #f2f2f2;
 }
 
 .todo-header button {
     border-radius: 8px;
     padding: 5px 10px;
-    border: 2px solid #42D392;
+    border: 2px solid #42d392;
     background-color: #319d6f;
     cursor: pointer;
     color: white;
     font-weight: bold;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
-.todo-header button:hover{
+.todo-header button:hover {
     background-color: #35af7a;
 }
 
-.todo-header button:active{
+.todo-header button:active {
     background-color: #257c57;
     border: 2px solid #319d6f;
-
 }
 
-.todo-list ul{
+.todo-list ul {
     list-style-type: none;
 }
 
@@ -96,26 +95,142 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 2px solid #DDD;
+    border-bottom: 2px solid #ddd;
+}
+
+.todo-item div {
+    display: flex;
+    align-items: center;
+}
+
+.done {
+    text-decoration: line-through;
 }
 
 .todo-item button {
     border-radius: 8px;
     padding: 5px 10px;
-    border: 2px solid #D72638;
+    border: 2px solid #d72638;
     background-color: #c92535;
     cursor: pointer;
     color: white;
     font-weight: bold;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
-.todo-item button:hover{
+.todo-item button:hover {
     background-color: rgb(173, 32, 46);
 }
 
-.todo-item button:active{
+.todo-item button:active {
     background-color: rgb(158, 29, 42);
     border: 2px solid #c72334;
+}
 
+input[type="checkbox"],
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Default */
+input[type="checkbox"],
+input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px !important;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    --focus: 2px rgba(39, 94, 254, 0.25);
+    outline: none;
+    transition: box-shadow 0.2s;
+}
+
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+    box-shadow: 0 0 0 var(--focus);
+}
+
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    input[type="checkbox"],
+    input[type="radio"] {
+        --active: #42d392;
+        --active-inner: #fff;
+        --focus: 2px #319d6ebe;
+        --border: #27795494;
+        --border-hover: #010101;
+        --background: #fff;
+        --disabled: #f6f8ff;
+        --disabled-inner: #e1e6f9;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        height: 21px;
+        outline: none;
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        cursor: pointer;
+        border: 1px solid var(--bc, var(--border));
+        background: var(--b, var(--background));
+        transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+    }
+}
+
+input[type="checkbox"]:after {
+    content: "";
+    display: block;
+    left: 0;
+    top: 0;
+    position: absolute;
+    transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+}
+
+input[type="checkbox"]:checked {
+    --b: var(--active);
+    --bc: var(--active);
+    --d-o: 0.3s;
+    --d-t: 0.6s;
+    --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+}
+
+input[type="checkbox"]:focus {
+    box-shadow: 0 0 0 var(--focus);
+}
+
+input[type="checkbox"]:after {
+    opacity: var(--o, 0);
+}
+
+input[type="checkbox"]:checked {
+    --o: 1;
+}
+
+input[type="checkbox"] + label {
+    font-size: 14px;
+    line-height: 21px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+input[type="checkbox"] {
+    border-radius: 7px;
+}
+
+input[type="checkbox"]:after {
+    width: 5px;
+    height: 9px;
+    border: 2px solid var(--active-inner);
+    border-top: 0;
+    border-left: 0;
+    left: 7px;
+    top: 4px;
+    transform: rotate(var(--r, 20deg));
+}
+
+input[type="checkbox"]:checked {
+    --r: 43deg;
 }

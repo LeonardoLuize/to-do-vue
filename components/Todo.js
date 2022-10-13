@@ -5,14 +5,14 @@ export default {
         return {
             newItem: "",
             listValue: [
-                {id: id++, text: "Item 1"},
+                {id: id++, text: "Item 1", done: false},
             ],
         }
     },
     emits: ['updateInput'],
     methods: {
         addItem(){
-            this.listValue.push({id: id++, text: this.newItem})
+            this.listValue.push({id: id++, text: this.newItem, done: false})
             this.newItem = ""
         },
         removeItem(id){
@@ -29,7 +29,13 @@ export default {
                 </div>
                 <div class="todo-list">
                     <ul>
-                        <li class="todo-item" v-for="item in listValue" :key="item.id">{{item.text}} <button @click="removeItem(item.id)">X</button></li>
+                        <li class="todo-item" v-for="item in listValue" :key="item.id">
+                            <div>
+                                <input type="checkbox" v-model="item.done">
+                                <span :class="{ done: item.done }">{{item.text}}</span>
+                            </div>
+                            <button @click="removeItem(item.id)">X</button>
+                        </li>
                     </ul>
                 </div>
             </div>
