@@ -1,15 +1,31 @@
+let id = 0
+
 export default {
-    props: {
-        listValue: Array,
-        addItem: Function,
-        removeItem: Function,
-        newItem: Function
+    data(){
+        return {
+            newItem: "",
+            listValue: [
+                {id: id++, text: "Item 1"},
+            ],
+        }
+    },
+    emits: ['updateInput'],
+    methods: {
+        addItem(){
+            this.listValue.push({id: id++, text: this.newItem})
+            this.newItem = ""
+        },
+        removeItem(id){
+            this.listValue = this.listValue.filter(item => item.id !== id)
+        }
     },
     template: `
         <div class="todo-container" >
             <div class="todo-content">
                 <div class="todo-header">
-                    <input v-model="newItem" placeholder="Adicione um item" /> <button @click="addItem()">Add</button>
+                    <form @submit.prevent="addItem">
+                        <input v-model="newItem" placeholder="Adicione um item" /> <button>Add</button>
+                    </form>
                 </div>
                 <div class="todo-list">
                     <ul>
